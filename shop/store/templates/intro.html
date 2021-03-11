@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <title>first page</title>
+  </head>
+  <body>
+
+  {% extends 'main.html' %}
+  {% load static %}
+  {% block content %}
+  <h1 align="center">Hello my dear reader ^_^</h1>
+
+  <div class="container-intro">
+    <div class="flybook"> <img src="{% static 'images/flybooks.png' %}">
+    </div>
+    <div class="text-box">
+      <div class="row align-items-start">
+        <div class="col">
+
+        </div>
+        <div class="col">
+          <h2 style="margin-top:85px">About me</h2>
+          <p>Hello everyone, I'm a beginner programmer.
+            <br>
+          <hr>
+          The book is the greatest teacher of all mankind. This is a friend who accompanies us from the nursery cradle
+          to ripe old age.
+
+          The book that has ended up in our hands can give us a lot. But on condition that we also give her some of our
+          attention and time. In relations with the book, the universal law of energy exchange and conservation
+          operates.<br> <br> &emsp; Not every book can be useful, but not every reader will be able to benefit from a valuable book. As
+          a rule, with our upbringing, maturity, our literary preferences change, and with them their carriers - eternal
+          friends - books.
+          </p>
+
+          <h2 style="margin-top:160px;">About my site</h2>
+          <p>
+          Hello everyone, this is my first site.
+            <hr>
+          As they said:
+          <br>L. Settembrini - A book is man's best friend.
+          <br>A.S. Pushkin - Reading is the best teaching!
+          <br>D. Diderot - People stop thinking when they stop reading.
+          <br>D. Addison - Reading is to the mind what physical exercise is to the body.
+          <hr>
+          This site was made for people to buy, honor, write reviews of books they liked or didn’t like. many people
+          call us bookworms, but this is not so, we are cold-blooded snakes, our mind is poison, our fangs are a sharp
+          tongue.
+          <br>
+          Interested? go to the store &#10149;
+          <a type="button" href="{% url 'store' %}" class="btn btn-outline-danger">Store</a>
+          </p>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock content %}
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+          crossorigin="anonymous"></script>
+
+  </body>
+</html>

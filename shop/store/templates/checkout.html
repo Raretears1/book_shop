@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+  <title>Chek out</title>
+</head>
+<body>
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<h1>checkout</h1>
+
+<div class="container-checkout">
+  <div class="order-box">
+    <div class="card" style="margin-top:50px; margin-left:10px; background-color:#FFFFFF; box-shadow: 0 0 5px;">
+      <div class="card-body">
+        <form class="row g-3" style="width:750px">
+          <div class="col-md-6">
+            <label for="input-name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="input-name">
+          </div>
+          <hr>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username"
+                   aria-describedby="basic-addon2">
+            <span class="input-group-text" id="basic-addon2">@gmail.com</span>
+          </div>
+          <hr>
+        </form>
+
+        <div id="shipping-info">
+          <h4>Shipping Information: </h4>
+          <div class="col-md-4">
+            <label for="inputCity" class="form-label">City</label>
+            <select id="inputCity" class="form-select">
+              <option selected>Enter your city...</option>
+              <option value="Kyiv">Kyiv</option>
+              <option value="Lviv">Lviv</option>
+              <option value="Sumy">Sumy</option>
+              <option value="Herson">Herson</option>
+            </select>
+            <div class="col-12">
+              <label for="inputAddress" class="form-label">Address</label>
+              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+              <br>
+              <input type="text" class="form-control" id="inputPostNumber" placeholder="post #">
+            </div>
+          </div>
+          <div class="col-12">
+          </div>
+          <div class="col-12">
+            <hr>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="payment-info"  style="margin-top:5px; margin-left:8px">
+      <button class="btn btn-success btn-block" id="make-payment" >Make Payment</button>
+    </div>
+  </div>
+
+  <div class="order-info">
+    <div class="card" style="margin-top:50px; background-color:	#FFFFF; box-shadow: 0 0 5px;">
+      <div class="card-body">
+        <div class="order-box">
+          <form class="row g-3">
+            <div class="col-md-6">
+              <a type="button" class="btn btn-danger" href="{% url 'basket' %}">&#8592;Back to Basket</a>
+            </div>
+            <hr>
+            <div class="col-md-6">
+              <h5>Order Summary</h5>
+            </div>
+            <hr>
+            <tr>
+                  <th><h5>Items: <strong>{{order.get_total_items}}</strong></h5></th>
+                  <th><h5>Total:<strong> ${{order.get_basket_total|floatformat:2}}</strong></h5></th>
+                </tr>
+            <hr>
+            {% for item in items %}
+            <div class="row" style="display:inline-block">
+              <div class="info-products-checkout">
+                <tr>
+                  <td><img class="row-image" src="{{ item.product.imageURL }}"></td>
+                  <br>
+                  <br>
+                  <td><strong>Item:</strong> {{item.product.title}}</td>
+                  <br>
+                  <td><strong>Price:</strong> ${{item.product.price}}</td>
+                  <br>
+                  <td><strong>Quantity:</strong> x{{item.quantity}}</td>
+                </tr>
+              </div>
+              <hr>
+              {% endfor %}
+              <div class="col-12">
+              </div>
+            </div>
+            <div class="col-12">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+{% endblock content %}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+          crossorigin="anonymous"></script>
+
+
+</body>
+</html>

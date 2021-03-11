@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+      <title>Book shop</title>
+  </head>
+  <body>
+  {% extends 'main.html' %}
+  {% load static %}
+  {% block content %}
+
+  <h1>Store</h1>
+  {% for product in products %}
+  <div class="card" style="width: 16rem; display:inline-block; margin-top:40px;margin-left:60px">
+      <img src="{{product.image.url}}" class="card-img-top" alt="...">
+      <div class="card-body">
+          <h5><strong>{{product.title}}</strong></h5>
+          <hr>
+          <p class="card-text">Author: {{product.author_name}}</p>
+          <div class="btn-group" role="group" aria-label="Basic outlined example">
+
+              <button class="btn btn-danger add-btn update-basket" data-product={{product.id}} data-action="add"
+                      type="button"
+                      style="margin-right:20px; height:51px">Add to Basket
+              </button>
+
+              <a type="button" class="btn btn-success" href="{% url 'view_info' %}" >View</a>
+              <h5><strong style="display: inline-block; float: right; margin-left:15px">${{product.price}}</strong></h5>
+          </div>
+      </div>
+  </div>
+  {% endfor %}
+
+  <hr>
+  <div class="pagination" style="margin-left:800px">
+    <span class="step-links">
+        {% if products.has_previous %}
+            <a href="?page=1" type="button" class="btn btn-light" style="margin-right:10px">&#8672; first</a>
+            <a type="button" class="btn btn-info" style="margin-left:10px href="
+               ?page={{products.previous_page_number}}"
+            >&#8656; previous</a>
+        {% endif %}
+
+        <span class="current">
+            <h4>Page {{ products.number }} of {{ products.paginator.num_pages }}:</h4>
+        </span>
+
+        {% if products.has_next %}
+            <a type="button" class="btn btn-light" style="margin-right:10px"
+               href="?page={{ products.next_page_number }}">&#8674; next</a>
+        <a type="button" class="btn btn-info" style="margin-left:10px" href="?page={{ products.paginator.num_pages }}">&#8658;last</a>
+        {% endif %}
+    </span>
+
+  </div>
+
+  {% endblock content %}
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+  </body>
+</html>
